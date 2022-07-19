@@ -1,19 +1,19 @@
-import type { GameOverProps, PlayerColor, Winner } from "../types";
+import type { GameOverProps, PlayerColor, Winner } from '../types';
 
-import { CHECKER_COLOR } from "../constant";
+import { CHECKER_COLOR } from '../constant';
 
 export function GameOver({
   gameResult,
   playerColor,
-  onPlayAgain,
+  onPlayAgain
 }: GameOverProps): JSX.Element {
   let element: JSX.Element | undefined;
 
-  if (typeof gameResult === "string") {
+  if (typeof gameResult === 'string') {
     element = <DrawResult onPlayAgain={onPlayAgain} />;
   }
 
-  if (typeof gameResult === "object") {
+  if (typeof gameResult === 'object') {
     element = (
       <WinnerResult
         onPlayAgain={onPlayAgain}
@@ -49,7 +49,7 @@ function DrawResult({ onPlayAgain }: { onPlayAgain: () => void }) {
 function WinnerResult({
   onPlayAgain,
   playerColor,
-  result,
+  result
 }: {
   onPlayAgain: () => void;
   playerColor: PlayerColor;
@@ -97,7 +97,7 @@ function WinnerResult({
         {checkerPieces !== 0 && (
           <div className="mb-2 space-y-2">
             <div>
-              Remaining Checkers{" "}
+              Remaining Checkers{' '}
               <span className="text-sm text-gray-500">{`(${checkerPieces})`}</span>
             </div>
             <div className="flex flex-wrap gap-1">
@@ -109,7 +109,7 @@ function WinnerResult({
         {remainingPieces !== 0 && (
           <div className="mb-2 space-y-2">
             <div>
-              Remaining Pieces{" "}
+              Remaining Pieces{' '}
               <span className="text-sm text-gray-500">{`(${remainingPieces})`}</span>
             </div>
             <div className="flex flex-wrap gap-1">
@@ -121,7 +121,7 @@ function WinnerResult({
         {destroyedPieces !== 0 && (
           <div className="space-y-2">
             <div>
-              Destroyed Pieces{" "}
+              Destroyed Pieces{' '}
               <span className="text-sm text-gray-500">{`(${destroyedPieces})`}</span>
             </div>
             <div className="flex flex-wrap gap-1">

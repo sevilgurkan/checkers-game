@@ -1,4 +1,4 @@
-import { GameObject } from "./entity/GameObject";
+import { GameObject } from './entity/GameObject';
 
 export type GameBoard = Map<string, GameObject | null>;
 export type PlayerColor = { [key: string]: string };
@@ -6,7 +6,7 @@ export type Moves = { [key: string]: number };
 export type GameOverResult = PlayerNumber | Draw | false;
 export type Draw = 0;
 export type PlayerNumber = 1 | 2;
-export type MoveDirection = "left" | "up" | "right" | "down";
+export type MoveDirection = 'left' | 'up' | 'right' | 'down';
 export type GameResult = string | Winner;
 export type Winner = {
   player: PlayerNumber;

@@ -1,5 +1,5 @@
-import type { GameInfoProps } from "../types";
-import clsx from "clsx";
+import type { GameInfoProps } from '../types';
+import clsx from 'clsx';
 
 export function GameInfo({ info }: GameInfoProps) {
   const { errorMessage, draggingKey, currentKey } = info;
@@ -10,8 +10,8 @@ export function GameInfo({ info }: GameInfoProps) {
         <div
           key={errorMessage}
           className={clsx(
-            "flex items-center rounded-lg border border-yellow-600 p-2 opacity-0 transition-all duration-200",
-            errorMessage && "opacity-100"
+            'flex items-center rounded-lg border border-yellow-600 p-2 opacity-0 transition-all duration-200',
+            errorMessage && 'opacity-100'
           )}
         >
           <svg

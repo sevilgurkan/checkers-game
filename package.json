@@ -8,7 +8,7 @@
     "preview": "vite preview",
     "prepare": "husky install",
     "test": "npm run ts-check",
-    "format": "prettier --write --parser typescript \"src/**/*.ts\"",
+    "format": "prettier --write --parser typescript \"src/**/*.{js,jsx,ts,tsx}\"",
     "ts-check": "tsc -p tsconfig.json --noEmit"
   },
   "dependencies": {

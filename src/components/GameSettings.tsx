@@ -1,15 +1,15 @@
-import { useState, useRef } from "react";
-import type { GameSettingsProps } from "../types";
-import clsx from "clsx";
+import { useState, useRef } from 'react';
+import type { GameSettingsProps } from '../types';
+import clsx from 'clsx';
 
-import { BG_COLORS, BORDER_COLORS } from "../constant";
-import { useOutsideClick } from "../hooks";
+import { BG_COLORS, BORDER_COLORS } from '../constant';
+import { useOutsideClick } from '../hooks';
 
 export function GameSettings({
   showSettings,
   toggleGameSettingsMenu,
   playerColor,
-  onColorChange,
+  onColorChange
 }: GameSettingsProps) {
   const [volume, setVolume] = useState(50);
   const [selectedPlayer, setSelectedPlayer] = useState<number>(1);
@@ -18,8 +18,8 @@ export function GameSettings({
   const settingsRef = useRef<HTMLDivElement>(null);
 
   const containerClass = showSettings
-    ? "translate-x-0 opacity-100 visible"
-    : "opacity-0 translate-x-[calc(100%_+_20px)] invisible";
+    ? 'translate-x-0 opacity-100 visible'
+    : 'opacity-0 translate-x-[calc(100%_+_20px)] invisible';
 
   const handleVolumeChange = (e: any) => {
     setVolume(+e.target.value);
@@ -51,16 +51,16 @@ export function GameSettings({
   const renderColorElements = () => {
     return (
       <div className="mt-2 flex">
-        {["You", "Opponent"].map((val, idx) => {
+        {['You', 'Opponent'].map((val, idx) => {
           const playerNumber = idx + 1; // 1 and 2
           return (
             <button
               key={val}
               className={clsx(
-                "mr-2 flex items-center justify-center rounded-md border p-2 shadow-sm shadow-black",
+                'mr-2 flex items-center justify-center rounded-md border p-2 shadow-sm shadow-black',
                 showColors && selectedPlayer === playerNumber
                   ? getColorBtnClass()
-                  : "primary-border-color"
+                  : 'primary-border-color'
               )}
               onClick={() => handleColorMenu(playerNumber)}
             >
@@ -85,7 +85,7 @@ export function GameSettings({
     <div
       ref={settingsRef}
       className={clsx(
-        "primary-border-color absolute right-5 top-5 bottom-5 z-50 w-2/5 rounded-lg bg-[#171a1c] p-8 text-gray-400 shadow-md shadow-black transition-all duration-200",
+        'primary-border-color absolute right-5 top-5 bottom-5 z-50 w-2/5 rounded-lg bg-[#171a1c] p-8 text-gray-400 shadow-md shadow-black transition-all duration-200',
         containerClass
       )}
     >
@@ -119,7 +119,7 @@ export function GameSettings({
 function Colors({
   showColors,
   onColorChange,
-  selectedPlayer,
+  selectedPlayer
 }: {
   showColors: boolean;
   onColorChange: (player: number, c: string) => void;
@@ -128,8 +128,8 @@ function Colors({
   return (
     <div
       className={clsx(
-        "primary-border-color mt-2 flex flex-wrap border p-2 shadow-sm shadow-black transition-all",
-        showColors ? "h-auto" : "h-0"
+        'primary-border-color mt-2 flex flex-wrap border p-2 shadow-sm shadow-black transition-all',
+        showColors ? 'h-auto' : 'h-0'
       )}
     >
       {BG_COLORS.map((color) => (

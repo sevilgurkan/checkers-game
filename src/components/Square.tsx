@@ -1,17 +1,17 @@
-import type { SquareProps } from "../types";
-import { memo } from "react";
-import clsx from "clsx";
+import type { SquareProps } from '../types';
+import { memo } from 'react';
+import clsx from 'clsx';
 
-import { GameObject } from "../entity/GameObject";
+import { GameObject } from '../entity/GameObject';
 
-import { CHECKER_COLOR } from "../constant";
+import { CHECKER_COLOR } from '../constant';
 
 const Square = ({
   dataKey,
   possibleMoveKeys,
   gameObject,
   playerColor,
-  playerNumber,
+  playerNumber
 }: SquareProps) => {
   const isPossibleMoveKey = possibleMoveKeys.includes(dataKey);
 
@@ -23,21 +23,21 @@ const Square = ({
     <div
       draggable={false}
       className={clsx(
-        "z-10 flex cursor-default items-center justify-center border-none outline-none transition-transform duration-200 hover:bg-opacity-50"
+        'z-10 flex cursor-default items-center justify-center border-none outline-none transition-transform duration-200 hover:bg-opacity-50'
       )}
     >
       <span
         data-key={dataKey}
         draggable={isGameObject && gameObject.value === playerNumber}
         className={clsx(
-          "absolute h-[60px] w-[60px] cursor-grab rounded-full border-none outline-none",
+          'absolute h-[60px] w-[60px] cursor-grab rounded-full border-none outline-none',
           playerColor[gameObject.value]
         )}
       >
         {isChecker && (
           <span
             className={clsx(
-              "absolute left-0 top-0 right-0 bottom-0 w-full animate-spin-slow rounded-full",
+              'absolute left-0 top-0 right-0 bottom-0 w-full animate-spin-slow rounded-full',
               CHECKER_COLOR[playerColor[gameObject.value]]
             )}
           />

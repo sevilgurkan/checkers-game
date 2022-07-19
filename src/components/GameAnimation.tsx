@@ -1,4 +1,4 @@
-import type { GameAnimationProps } from "../types";
+import type { GameAnimationProps } from '../types';
 
 export function GameAnimation({
   startAnimation,

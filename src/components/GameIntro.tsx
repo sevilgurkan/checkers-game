@@ -1,4 +1,4 @@
-import type { GameIntroProps } from "../types";
+import type { GameIntroProps } from '../types';
 
 export function GameIntro({ onGameStart }: GameIntroProps) {
   return (

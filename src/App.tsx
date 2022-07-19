@@ -1,11 +1,11 @@
-import { useState } from "react";
-import { GameContainer } from "./components/GameContainer";
+import { useState } from 'react';
+import { GameContainer } from './components/GameContainer';
 
-import { GameIntro } from "./components/GameIntro";
+import { GameIntro } from './components/GameIntro';
 
 function App() {
   const [isGameStart, setIsGameStart] = useState<boolean>(false);
-  const [char, setChar] = useState<string>("a");
+  const [char, setChar] = useState<string>('a');
   const handleGameStart = () => {
     setIsGameStart(true);
   };
@@ -15,7 +15,7 @@ function App() {
   // the react element is completely recreated and all the states in it are reset as well.
   // this is a little trick.
   const handleGameReset = () => {
-    const c = char === "a" ? "b" : "a";
+    const c = char === 'a' ? 'b' : 'a';
     setChar(c);
   };
 

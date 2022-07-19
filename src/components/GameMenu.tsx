@@ -1,6 +1,6 @@
-import type { GameMenuProps } from "../types";
-import { useAudioContext } from "../context/audio-context";
-import clsx from "clsx";
+import type { GameMenuProps } from '../types';
+import { useAudioContext } from '../context/audio-context';
+import clsx from 'clsx';
 
 export function GameMenu({
   playerColor,
@@ -8,7 +8,7 @@ export function GameMenu({
   time,
   showSettings,
   onReset,
-  toggleGameSettingsMenu,
+  toggleGameSettingsMenu
 }: GameMenuProps) {
   const { isMuted, toggleMute } = useAudioContext();
 
@@ -17,8 +17,8 @@ export function GameMenu({
       {/* SIDE MENU */}
       <div
         className={clsx(
-          "absolute top-0 bottom-0 -right-[64px] flex w-11 flex-col",
-          showSettings && "pointer-events-none"
+          'absolute top-0 bottom-0 -right-[64px] flex w-11 flex-col',
+          showSettings && 'pointer-events-none'
         )}
       >
         {/* Turn */}

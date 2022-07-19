@@ -1,21 +1,21 @@
-import { useState, useRef, useEffect } from "react";
-import type { GameBoard, GameProps, PlayerNumber, Winner } from "../types";
+import { useState, useRef, useEffect } from 'react';
+import type { GameBoard, GameProps, PlayerNumber, Winner } from '../types';
 
 // hooks
-import { useAudio } from "../hooks";
+import { useAudio } from '../hooks';
 
 // constants
-import { initalizeBoard, audioUrl } from "../constant";
+import { initalizeBoard, audioUrl } from '../constant';
 
 // entitiy
-import { GameObject } from "../entity/GameObject";
+import { GameObject } from '../entity/GameObject';
 
 // board utils
 import {
   generateClasses,
   getDataColumnNumber,
-  getDataColumnChar,
-} from "../utils/board";
+  getDataColumnChar
+} from '../utils/board';
 
 // game utils
 import {
@@ -24,28 +24,28 @@ import {
   getOpponentNumber,
   itsChecker,
   isGameOver,
-  totalCheckers,
-} from "../utils/game";
+  totalCheckers
+} from '../utils/game';
 
 // components
-import { MemoizedSquare as Square } from "./Square";
+import { MemoizedSquare as Square } from './Square';
 
 export function Game({
   gameSettingsOpen,
   playerColor,
   onPlayerChange,
   onInfo,
-  onGameOver,
+  onGameOver
 }: GameProps) {
   const [gameBoard, setGameBoard] = useState<GameBoard>(() => initalizeBoard());
 
-  const [errorMessage, setErrorMessage] = useState<string>("");
+  const [errorMessage, setErrorMessage] = useState<string>('');
 
   const [isDropped, setIsDropped] = useState<boolean>(false);
   const [isDragging, setIsDragging] = useState<boolean>(false);
-  const [draggingKey, setDraggingKey] = useState<string>("");
+  const [draggingKey, setDraggingKey] = useState<string>('');
 
-  const [currentKey, setCurrentKey] = useState<string>("");
+  const [currentKey, setCurrentKey] = useState<string>('');
   const [playerNumber, setPlayerNumber] = useState<PlayerNumber>(1);
   const [possibleMoveKeys, setPossibleMoveKeys] = useState<string[]>([]);
 
@@ -57,14 +57,14 @@ export function Game({
 
   const { play: dropAudioPlay, pause: dropAudioPause } = useAudio(audioUrl, {
     volume: 1,
-    playBackRate: 1,
+    playBackRate: 1
   });
 
   const handleDragStart = (e: React.DragEvent<HTMLDivElement>) => {
     dropAudioPause();
 
     draggingItem.current = e.target as HTMLDivElement;
-    draggingItem.current.parentElement?.classList.add("drag-start");
+    draggingItem.current.parentElement?.classList.add('drag-start');
 
     const key = draggingItem.current.dataset.key as string;
 
@@ -86,7 +86,7 @@ export function Game({
     // if he drags and drops it on itself
     setTimeout(() => {
       const elementDisplay = _draggingItem.style.display;
-      _draggingItem.style.display = elementDisplay === "none" ? "flex" : "none";
+      _draggingItem.style.display = elementDisplay === 'none' ? 'flex' : 'none';
     }, 0);
   };
 
@@ -103,20 +103,20 @@ export function Game({
     if (!destinationKey || !fromKey) return;
 
     if (!possibleMoveKeys.includes(destinationKey)) {
-      setErrorMessage("You cannot play outside of the specified moves.");
+      setErrorMessage('You cannot play outside of the specified moves.');
       return;
     }
 
     setCurrentKey(destinationKey);
-    setErrorMessage("");
+    setErrorMessage('');
 
-    dragOverItem.current.classList.add("drag-primary-hover");
+    dragOverItem.current.classList.add('drag-primary-hover');
   };
 
   const handleDrop = (e: React.DragEvent<HTMLDivElement>) => {
     dropAudioPlay();
-    setCurrentKey("");
-    setDraggingKey("");
+    setCurrentKey('');
+    setDraggingKey('');
     setIsDropped(true);
 
     setPossibleMoveKeys([]);
@@ -124,11 +124,11 @@ export function Game({
 
     if (!dragOverItem.current || !draggingItem.current) return;
 
-    dragOverItem.current.classList.remove("drag-primary-hover");
-    draggingItem.current.style.display = "flex";
-    draggingItem.current.parentElement?.classList.remove("drag-start");
+    dragOverItem.current.classList.remove('drag-primary-hover');
+    draggingItem.current.style.display = 'flex';
+    draggingItem.current.parentElement?.classList.remove('drag-start');
 
-    setErrorMessage("");
+    setErrorMessage('');
     // we updated the error message above to falsy empty string.
     // and below, we said early return if the error message is true.
     // this may sound confusing if you are not familiar with the react.
@@ -192,16 +192,16 @@ export function Game({
     if (Number.isInteger(resultNumber)) {
       let result;
       if (resultNumber === 0) {
-        result = "Draw";
+        result = 'Draw';
       } else {
         const checkers = totalCheckers(gameBoard, resultNumber as PlayerNumber);
         const isNumberOne = resultNumber === 1;
 
         result = {
           player: isNumberOne ? 1 : 2,
-          winner: isNumberOne ? "Player One" : "Player Two",
+          winner: isNumberOne ? 'Player One' : 'Player Two',
           checkers,
-          remainingPieces: isNumberOne ? p1_pieces : p2_pieces,
+          remainingPieces: isNumberOne ? p1_pieces : p2_pieces
         } as Winner;
       }
 
@@ -226,7 +226,7 @@ export function Game({
   const handleDragLeave = (
     e: React.DragEvent<HTMLDivElement> & { target: Element }
   ) => {
-    e.target.classList.remove("drag-primary-hover");
+    e.target.classList.remove('drag-primary-hover');
   };
 
   const renderBoard = () => {

@@ -1,4 +1,4 @@
-import type { GameHistoryProps } from "../types";
+import type { GameHistoryProps } from '../types';
 
 export function GameHistory({ showHistory }: GameHistoryProps) {
   return (

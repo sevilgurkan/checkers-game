@@ -1,8 +1,8 @@
-import type { MoveDirection, PlayerNumber, GameOverResult } from "../types";
-import { BOARD_LETTERS, ERROR_MESSAGES, BOARD_NUMBERS } from "../constant";
-import { GameObject } from "../entity/GameObject";
-import { log } from "./common";
-import { GameBoard } from "../types";
+import type { MoveDirection, PlayerNumber, GameOverResult } from '../types';
+import { BOARD_LETTERS, ERROR_MESSAGES, BOARD_NUMBERS } from '../constant';
+import { GameObject } from '../entity/GameObject';
+import { log } from './common';
+import { GameBoard } from '../types';
 
 const addition = (x: number, y: number): number => x + y;
 const subtraction = (x: number, y: number): number => x - y;
@@ -49,7 +49,7 @@ export function checkPieces(
 
   return {
     keyToBeDeleted: key,
-    deletedObj: objectPassedOver,
+    deletedObj: objectPassedOver
   };
 }
 
@@ -112,8 +112,8 @@ function getValidKeysInThreeDirections(
   // [upkey, leftkey, rightkey]
   // if one of the keys is undefined, "toOneMore.." function will return undefined
   // findDifferentKeys function will handle this
-  const oneMoreLeftKey = toOneMoreLeftRightUpKey(leftKey, "left");
-  const oneMoreRightKey = toOneMoreLeftRightUpKey(rightKey, "right");
+  const oneMoreLeftKey = toOneMoreLeftRightUpKey(leftKey, 'left');
+  const oneMoreRightKey = toOneMoreLeftRightUpKey(rightKey, 'right');
   const oneMoreUpKey = toOneMoreLeftRightUpKey(upKey, playerNumber);
 
   const diffKeys = findDifferentKeys(
@@ -171,7 +171,7 @@ function findDifferentKeys(
     const key = directionKeys[i];
     let entity;
 
-    if (typeof key === "string") entity = gameBoard.get(key);
+    if (typeof key === 'string') entity = gameBoard.get(key);
 
     if (
       !entity ||
@@ -239,10 +239,10 @@ function getCheckerMoves(
   fromKey: string,
   n: PlayerNumber
 ) {
-  const leftKeys = emptyKeysOnDirection(gameBoard, fromKey, "left", n);
-  const rightKeys = emptyKeysOnDirection(gameBoard, fromKey, "right", n);
-  const upKeys = emptyKeysOnDirection(gameBoard, fromKey, "up", n);
-  const downKeys = emptyKeysOnDirection(gameBoard, fromKey, "down", n);
+  const leftKeys = emptyKeysOnDirection(gameBoard, fromKey, 'left', n);
+  const rightKeys = emptyKeysOnDirection(gameBoard, fromKey, 'right', n);
+  const upKeys = emptyKeysOnDirection(gameBoard, fromKey, 'up', n);
+  const downKeys = emptyKeysOnDirection(gameBoard, fromKey, 'down', n);
 
   return [leftKeys, rightKeys, upKeys, downKeys].flat();
 }
@@ -333,7 +333,7 @@ function isCorrrectKey(key: string) {
   // key: undefined_4 = false
   // key: c_11 = false
   // key: afd = false
-  const splittedKey = key.split("_");
+  const splittedKey = key.split('_');
   if (splittedKey.length < 2) return false;
 
   const letter = splittedKey[0];
@@ -350,11 +350,11 @@ function toKey(letter: string, index: number | string) {
 }
 
 function toValue(key: string) {
-  return key.split("_")[1];
+  return key.split('_')[1];
 }
 
 function toLetter(key: string) {
-  return key.split("_")[0];
+  return key.split('_')[0];
 }
 
 function toInteger(val: string) {
@@ -412,18 +412,18 @@ function directionHandler(direction: MoveDirection) {
     left: toLeftKey,
     up: toUpKey,
     right: toRightKey,
-    down: toDownKey,
+    down: toDownKey
   };
 
   return directions[direction];
 }
 
 function toArithmeticOperation(playerNumberOrDirection: number | string) {
-  if (playerNumberOrDirection === 1 || playerNumberOrDirection === "right") {
+  if (playerNumberOrDirection === 1 || playerNumberOrDirection === 'right') {
     return addition;
   }
 
-  if (playerNumberOrDirection === 2 || playerNumberOrDirection === "left") {
+  if (playerNumberOrDirection === 2 || playerNumberOrDirection === 'left') {
     return subtraction;
   }
 
@@ -446,12 +446,12 @@ function getMoveDirection(fromKey: string, destinationKey: string) {
 
     // moves horizontally to the left
     if (destLetterIndex < fromLetterIndex) {
-      return "left";
+      return 'left';
     }
 
     // moves horizontally to the right
     if (destLetterIndex > fromLetterIndex) {
-      return "right";
+      return 'right';
     }
   }
 
@@ -459,12 +459,12 @@ function getMoveDirection(fromKey: string, destinationKey: string) {
   if (fromLetter === destLetter) {
     // moves vertically to the up
     if (destValue > fromValue) {
-      return "up";
+      return 'up';
     }
 
     // moves vertically to the down
     if (destValue < fromValue) {
-      return "down";
+      return 'down';
     }
   }
 
@@ -473,13 +473,13 @@ function getMoveDirection(fromKey: string, destinationKey: string) {
 
 function getKeyPassedOver(key: string, direction: MoveDirection) {
   switch (direction) {
-    case "up":
+    case 'up':
       return toDownKey(key);
-    case "right":
+    case 'right':
       return toLeftKey(key);
-    case "down":
+    case 'down':
       return toUpKey(key);
-    case "left":
+    case 'left':
       return toRightKey(key);
     default:
       throw new Error(`There is no case with this direction: ${direction}`);

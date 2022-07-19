@@ -1,19 +1,19 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect } from 'react';
 import type {
   Info,
   PlayerColor,
   GameResult,
   GameContainerProps
-} from "../types";
-import { useLocalStorage } from "../hooks";
+} from '../types';
+import { useLocalStorage } from '../hooks';
 
-import { GameInfo } from "./GameInfo";
-import { Game } from "./Game";
-import { GameMenu } from "./GameMenu";
-import { GameSettings } from "./GameSettings";
-import { GameStatus } from "./GameStatus";
-import { GameOver } from "./GameOver";
-import { GameAnimation } from "./GameAnimation";
+import { GameInfo } from './GameInfo';
+import { Game } from './Game';
+import { GameMenu } from './GameMenu';
+import { GameSettings } from './GameSettings';
+import { GameStatus } from './GameStatus';
+import { GameOver } from './GameOver';
+import { GameAnimation } from './GameAnimation';
 
 export function GameContainer({ resetGame }: GameContainerProps): JSX.Element {
   const [gameOver, setGameOver] = useState<boolean>(false);
@@ -22,17 +22,17 @@ export function GameContainer({ resetGame }: GameContainerProps): JSX.Element {
   const [gameSettingsOpen, setGameSettingsOpen] = useState<boolean>(false);
 
   const [playerColor, setPlayerColor] = useLocalStorage<PlayerColor>(
-    "player-color",
+    'player-color',
     {
-      1: "bg-purple-600",
-      2: "bg-green-600"
+      1: 'bg-purple-600',
+      2: 'bg-green-600'
     }
   );
 
   const [info, setInfo] = useState<Info>({
-    errorMessage: "",
-    draggingKey: "",
-    currentKey: ""
+    errorMessage: '',
+    draggingKey: '',
+    currentKey: ''
   });
 
   const [activePlayerNumber, setActivePlayerNumber] = useState(1);

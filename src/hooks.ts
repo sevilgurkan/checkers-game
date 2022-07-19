@@ -1,5 +1,5 @@
-import { useEffect, useState, useRef, SyntheticEvent } from "react";
-import { useAudioContext } from "./context/audio-context";
+import { useEffect, useState, useRef, SyntheticEvent } from 'react';
+import { useAudioContext } from './context/audio-context';
 
 //
 // ** USE AUDIO **
@@ -22,15 +22,15 @@ export function useAudio(url: string, { volume = 1, playBackRate = 1 }) {
   const pause = () => {
     if (!audio.current.paused) {
       audio.current.pause();
-      audio.current.src = "";
+      audio.current.src = '';
     }
   };
 
   useEffect(() => {
-    audio.current.addEventListener("ended", () => audio.current.pause());
+    audio.current.addEventListener('ended', () => audio.current.pause());
 
     return () => {
-      audio.current.addEventListener("ended", () => audio.current.pause());
+      audio.current.addEventListener('ended', () => audio.current.pause());
     };
   }, []);
 
@@ -51,12 +51,12 @@ export function useOutsideClick(
       handler(e);
     };
 
-    document.addEventListener("mousedown", listener);
-    document.addEventListener("touchstart", listener);
+    document.addEventListener('mousedown', listener);
+    document.addEventListener('touchstart', listener);
 
     return () => {
-      document.removeEventListener("mousedown", listener);
-      document.removeEventListener("touchstart", listener);
+      document.removeEventListener('mousedown', listener);
+      document.removeEventListener('touchstart', listener);
     };
   }, [ref, handler]);
 }
