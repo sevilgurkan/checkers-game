@@ -5,8 +5,6 @@
   <img width="800" src="./public/game.png" alt="preview 1" />
 </div>
 
-<a href="https://tr.wikipedia.org/wiki/Bilim_ve_Teknik">Bilim ve Teknik</a> dergisi, Nisan 1994 sayısı.
-
 # Notice
 
 This is not a completed game. I have not integrated some of the game rules and it is not fully optimized. It's a game I scribble while I'm resting.
