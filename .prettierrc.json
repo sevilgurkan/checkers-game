@@ -1,4 +1,7 @@
 {
-  "singleQutoe": false,
-  "semi": true
+  "singleQutoe": true,
+  "semi": true,
+  "printWidth": 80,
+  "trailingComma": "none",
+  "arrowParens": "always"
 }

@@ -3,7 +3,7 @@ import type {
   Info,
   PlayerColor,
   GameResult,
-  GameContainerProps,
+  GameContainerProps
 } from "../types";
 import { useLocalStorage } from "../hooks";
 
@@ -25,14 +25,14 @@ export function GameContainer({ resetGame }: GameContainerProps): JSX.Element {
     "player-color",
     {
       1: "bg-purple-600",
-      2: "bg-green-600",
+      2: "bg-green-600"
     }
   );
 
   const [info, setInfo] = useState<Info>({
     errorMessage: "",
     draggingKey: "",
-    currentKey: "",
+    currentKey: ""
   });
 
   const [activePlayerNumber, setActivePlayerNumber] = useState(1);
@@ -61,7 +61,7 @@ export function GameContainer({ resetGame }: GameContainerProps): JSX.Element {
 
     setPlayerColor((prev) => ({
       ...prev,
-      [playerNumber]: color,
+      [playerNumber]: color
     }));
   };
 

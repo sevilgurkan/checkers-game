@@ -2,7 +2,7 @@ import type { GameAnimationProps } from "../types";
 
 export function GameAnimation({
   startAnimation,
-  isGameOver,
+  isGameOver
 }: GameAnimationProps): JSX.Element {
   return ((startAnimation || isGameOver) && (
     <div className="absolute left-0 top-0 right-0 -z-10 h-full w-full overflow-hidden border-none">
