@@ -1,0 +1,90 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  background: #171a1c;
+}
+
+#root {
+  min-width: 1024px;
+}
+
+@layer components {
+  .col-number::before,
+  .col-char::after {
+    position: absolute;
+    z-index: 999;
+    @apply text-xl font-medium text-gray-500;
+  }
+
+  .col-number::before {
+    content: attr(data-column-number);
+    left: -60px;
+  }
+
+  .col-char::after {
+    content: attr(data-column-char);
+    bottom: -60px;
+  }
+
+  .col-even-bg {
+    @apply bg-transparent;
+  }
+  .col-odd-bg {
+    @apply bg-[#22282a];
+  }
+
+  .drag-primary-hover {
+    @apply bg-gray-300 bg-opacity-5;
+  }
+  .drag-warning-hover {
+  }
+
+  .primary-border-color {
+    border-color: rgba(115, 132, 140, 0.15);
+  }
+}
+
+.drag-start {
+  width: 10px;
+  height: 10px;
+  border-radius: 100%;
+  background: #ffffff36 !important;
+}
+
+.board-backdrop {
+  background: rgba(0, 0, 0, 0.4);
+}
+.volume-slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 6px;
+  border-radius: 14px;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: 0.2s;
+  transition: opacity 0.2s;
+}
+
+.volume-slider:hover {
+  opacity: 1;
+}
+
+.volume-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 100%;
+  background: #4a4c4b;
+  cursor: pointer;
+}
+
+.volume-slider::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  background: #4a4c4b;
+  cursor: pointer;
+}
