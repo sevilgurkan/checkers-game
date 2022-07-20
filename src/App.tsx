@@ -6,6 +6,7 @@ import { GameIntro } from './components/GameIntro';
 function App() {
   const [isGameStart, setIsGameStart] = useState<boolean>(false);
   const [char, setChar] = useState<string>('a');
+
   const handleGameStart = () => {
     setIsGameStart(true);
   };
@@ -21,8 +22,11 @@ function App() {
 
   return (
     <>
-      {isGameStart && <GameContainer key={char} resetGame={handleGameReset} />}
-      {!isGameStart && <GameIntro onGameStart={handleGameStart} />}
+      {isGameStart ? (
+        <GameContainer key={char} resetGame={handleGameReset} />
+      ) : (
+        <GameIntro onGameStart={handleGameStart} />
+      )}
     </>
   );
 }
