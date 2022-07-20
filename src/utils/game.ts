@@ -7,15 +7,8 @@ import { GameBoard } from '../types';
 const addition = (x: number, y: number): number => x + y;
 const subtraction = (x: number, y: number): number => x - y;
 
-/**
- * @param {Map<string, number>} gameBoard checkerBoard
- * @param {Number} playerNumber number of the current player
- * @param {String} fromKey dragging element key
- * @param {String} destinationKey key of the field to drop
- */
 export function checkPieces(
   gameBoard: GameBoard,
-  playerNumber: number,
   fromKey: string,
   destinationKey: string
 ) {
@@ -102,7 +95,6 @@ function getValidKeysInThreeDirections(
   playerNumber: number,
   directionKeys: Array<string | undefined>
 ) {
-  // order: up, left, right
   const [upKey, leftKey, rightKey] = directionKeys;
 
   let oneMoreLeftKeyEntity;
@@ -418,20 +410,6 @@ function directionHandler(direction: MoveDirection) {
   return directions[direction];
 }
 
-function toArithmeticOperation(playerNumberOrDirection: number | string) {
-  if (playerNumberOrDirection === 1 || playerNumberOrDirection === 'right') {
-    return addition;
-  }
-
-  if (playerNumberOrDirection === 2 || playerNumberOrDirection === 'left') {
-    return subtraction;
-  }
-
-  throw new Error(
-    `No operation with this direction name or player number: ${playerNumberOrDirection}`
-  );
-}
-
 function getMoveDirection(fromKey: string, destinationKey: string) {
   const fromValue = toValue(fromKey);
   const destValue = toValue(destinationKey);
@@ -484,6 +462,20 @@ function getKeyPassedOver(key: string, direction: MoveDirection) {
     default:
       throw new Error(`There is no case with this direction: ${direction}`);
   }
+}
+
+function toArithmeticOperation(playerNumberOrDirection: number | string) {
+  if (playerNumberOrDirection === 1 || playerNumberOrDirection === 'right') {
+    return addition;
+  }
+
+  if (playerNumberOrDirection === 2 || playerNumberOrDirection === 'left') {
+    return subtraction;
+  }
+
+  throw new Error(
+    `No operation with this direction name or player number: ${playerNumberOrDirection}`
+  );
 }
 
 function toOneMoreLeftRightUpKey(

@@ -147,12 +147,7 @@ export function Game({
     }
 
     // check if there are pieces to destroy
-    const checkPiecesResult = checkPieces(
-      gameBoard,
-      playerNumber,
-      fromKey,
-      destinationKey
-    );
+    const checkPiecesResult = checkPieces(gameBoard, fromKey, destinationKey);
 
     const copiedGameBoard = new Map(gameBoard);
 
